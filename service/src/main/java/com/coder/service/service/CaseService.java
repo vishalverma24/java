@@ -28,6 +28,7 @@ public class CaseService {
         Case newCase = new Case();
         newCase.setUser(user);
         newCase.setCreatedDate(date);
+        newCase.setInitialSlot(slot);
         newCase.setDoctor(null); // Initially empty
 
         Case updatedCase = caseRepository.save(newCase);

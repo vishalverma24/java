@@ -1,5 +1,6 @@
 package com.coder.service.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,13 +19,15 @@ public class Doctor {
     private Long id;
 
     private String name;
-    private int age;
+    private Integer age;
     private String gender;
     private String degree;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DoctorAvailability> availabilities;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Case> cases;
 }

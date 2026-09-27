@@ -1,5 +1,7 @@
 package com.coder.service.entity;
 
+import com.coder.service.converter.StringListConverter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,14 +19,23 @@ public class User {
     private Long id;
 
     private String name;
-    private int age;
-    private double height;
-    private double weight;
-    private String diseases;
-    private String allergies;
-    private String deficiencies;
-    private String testReports;
+    private Integer age;
+    private Double height;
+    private Double weight;
 
+    @Convert(converter = StringListConverter.class)
+    private List<String> diseases;
+
+    @Convert(converter = StringListConverter.class)
+    private List<String> allergies;
+
+    @Convert(converter = StringListConverter.class)
+    private List<String> deficiencies;
+
+    @Convert(converter = StringListConverter.class)
+    private List<String> testReports;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Case> cases;
 }

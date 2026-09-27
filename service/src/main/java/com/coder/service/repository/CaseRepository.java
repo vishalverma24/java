@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface CaseRepository extends JpaRepository<Case, Long> {
-    boolean existsByDoctorAndDateAndSlot(Doctor doctor, LocalDate date, Slot slot);
+    boolean existsByDoctorAndCreatedDateAndInitialSlot(Doctor doctor, LocalDate date, Slot slot);
 
     List<Case> findByUserId(Long userId);
 }
